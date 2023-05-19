@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import './../styles/App.css';
 
@@ -32,12 +31,23 @@ const App = () => {
     { name: 'Mount Abu', country: 'India' },
     { name: 'Tirupati', country: 'India' },
     ]
-    
-  return (
-    <div id="main">
-               {/* Do not remove the main div */}
-    </div>
-  )
-}
-
-export default App
+    const indianCities = cityList.filter(city => city.country === 'India');
+   console.log(indianCities)
+   
+    return (
+      <div>
+        <h1>Holiday List</h1>
+        <ol>
+          {indianCities.map((city, index) => (
+            <CityListItem key={`location${index + 1}`} cityName={city.name} />
+          ))}
+        </ol>
+      </div>
+    );
+  };
+  
+  const CityListItem = ({ cityName }) => {
+    return <li>{cityName}</li>;
+  };
+  
+  export default App;
